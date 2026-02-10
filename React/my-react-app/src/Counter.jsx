@@ -5,10 +5,10 @@ function Counter() {
   const [isPressed, setIsPressed] = useState(false);
 
   const increment = () => {
-    setCount(count + 1);
+    setCount((c) => c + 1);
   };
   const decrement = () => {
-    setCount(count - 1);
+    setCount((c) => c - 1);
     setIsPressed(true);
   };
   const reset = () => {
