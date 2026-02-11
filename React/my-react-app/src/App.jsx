@@ -31,9 +31,9 @@ function App() {
         <List items={vegetables} category="Low-Calorie Vegetables" />
       </div> */}
       {/* <InputName /> */}
-      {/* <Counter /> */}
+      <Counter />
       {/* <ColorPicker /> */}
-      <ObjectChange />
+      {/* <ObjectChange /> */}
     </>
   );
 }

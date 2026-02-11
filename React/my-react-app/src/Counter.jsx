@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Counter() {
   const [count, setCount] = useState(0);
-  const [isPressed, setIsPressed] = useState(false);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
 
   const increment = () => {
     setCount((c) => c + 1);
   };
   const decrement = () => {
     setCount((c) => c - 1);
-    setIsPressed(true);
   };
   const reset = () => {
     setCount(0);
-    setIsPressed(false);
   };
 
   return (
     <div className="counter-container">
-      <h1 className="counter" style={{ color: isPressed ? "red" : "black" }}>
+      <h1
+        className="counter"
+        style={{ color: count < 0 ? "red" : count > 0 ? "green" : "black" }}
+      >
         {count}
       </h1>
       <button className="decrement-btn" onClick={decrement}>
