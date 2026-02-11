@@ -14,16 +14,39 @@ function Todo() {
   };
 
   const handleAddTask = (task) => {
-    setTaskList((tlist) => [...tlist, task]);
-    setTask("");
+    if (task !== "") {
+      setTaskList((tlist) => [...tlist, task]);
+      setTask("");
+    }
   };
 
   const handleRemoveTask = (index) => {
     setTaskList(taskList.filter((_, i) => i !== index));
   };
 
-  const handleMoveUpTask = () => {};
-  const handleMoveDownTask = () => {};
+  const handleMoveUpTask = (index) => {
+    if (index > 0) {
+      const updatedTaskList = [...taskList];
+      [updatedTaskList[index], updatedTaskList[index - 1]] = [
+        updatedTaskList[index - 1],
+        updatedTaskList[index],
+      ];
+
+      setTaskList(updatedTaskList);
+    }
+  };
+
+  const handleMoveDownTask = (index) => {
+    if (index < taskList.length - 1) {
+      const updatedTaskList = [...taskList];
+      [updatedTaskList[index], updatedTaskList[index + 1]] = [
+        updatedTaskList[index + 1],
+        updatedTaskList[index],
+      ];
+
+      setTaskList(updatedTaskList);
+    }
+  };
 
   return (
     <div className="todo-list">
@@ -34,15 +57,26 @@ function Todo() {
         onChange={handleTaskChange}
         placeholder="Enter a task..."
       />
-      <button onClick={() => handleAddTask(task)}>Add</button>
+      <button className="add-btn" onClick={() => handleAddTask(task)}>
+        Add
+      </button>
 
       <ol>
         {taskList.map((task, index) => (
           <li key={index}>
-            {task}
-            <button onClick={() => handleRemoveTask(index)}>❌</button>
-            <button>⬆️</button>
-            <button>⬇️</button>
+            <span className="text">{task}</span>
+            <button className="rmv-btn" onClick={() => handleRemoveTask(index)}>
+              ❌
+            </button>
+            <button className="up-btn" onClick={() => handleMoveUpTask(index)}>
+              ⬆️
+            </button>
+            <button
+              className="down-btn"
+              onClick={() => handleMoveDownTask(index)}
+            >
+              ⬇️
+            </button>
           </li>
         ))}
       </ol>
