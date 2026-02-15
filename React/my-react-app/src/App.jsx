@@ -5,6 +5,7 @@ import Counter from "./Counter.jsx";
 import InputName from "./InputName.jsx";
 import ColorPicker from "./ColorPicker.jsx";
 import ObjectChange from "./ObjectChange.jsx";
+import Reference from "./reference.jsx";
 
 function App() {
   const fruits = [
@@ -31,9 +32,10 @@ function App() {
         <List items={vegetables} category="Low-Calorie Vegetables" />
       </div> */}
       {/* <InputName /> */}
-      <Counter />
+      {/* <Counter /> */}
       {/* <ColorPicker /> */}
       {/* <ObjectChange /> */}
+      <Reference />
     </>
   );
 }
