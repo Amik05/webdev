@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My First Django Page</title>
+  </head>
+  <body>
+    <h1>Database Greetings</h1>
+    <ul>
+      {% for item in greetings_list %}
+      <li>{{ item.title }} - {{ item.content }}</li>
+      {% empty %}
+      <li>No greetings found in the database!</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
